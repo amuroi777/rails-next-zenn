@@ -1,0 +1,37 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint --dir src",
+   "format": "next lint --fix --dir src"
+  },
+  "dependencies": {
+    "@types/node": "22.15.29",
+    "@types/react": "19.1.6",
+    "@types/react-dom": "19.1.5",
+    "autoprefixer": "10.4.21",
+    "next": "15.3.3",
+    "postcss": "8.5.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "tailwindcss": "4.1.8",
+    "typescript": "5.8.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^13.4.19",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.4.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.5.3"
+  }
+}

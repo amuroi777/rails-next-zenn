@@ -10,8 +10,8 @@ import Document, {
 } from 'next/document'
 import * as React from 'react'
 
-import createEmotionCache from '@/pages/styles/createEmotionCache'
-import theme from '@/pages/styles/theme'
+import createEmotionCache from '@/styles/createEmotionCache'
+import theme from '@/styles/theme'
 
 export default class MyDocument extends Document {
   render(): JSX.Element {

@@ -1,7 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import MUIProvider from '../src/components/MUIProvider'
+import MUIProvider from '@/components/MUIProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 

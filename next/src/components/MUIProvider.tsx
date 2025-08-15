@@ -1,17 +1,16 @@
 'use client'
 
-import { ThemeProvider, createTheme } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { ReactNode } from 'react'
 
-// シンプルなテーマを作成
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#1976d2',
+      main: '#3EA8FF',
     },
     secondary: {
-      main: '#dc004e',
+      main: '#19857b',
     },
   },
 })
@@ -27,4 +26,4 @@ export default function MUIProvider({ children }: MUIProviderProps) {
       {children}
     </ThemeProvider>
   )
-} 
+}

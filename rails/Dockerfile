@@ -14,8 +14,7 @@ RUN mkdir /myapp
 WORKDIR /myapp
 
 # Gemfileをコピー
-COPY Gemfile /myapp/Gemfile
-
+COPY Gemfile Gemfile.lock /myapp/
 # bundlerを更新
 RUN gem update --system
 RUN gem install bundler

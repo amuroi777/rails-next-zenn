@@ -31,6 +31,9 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "localhost:3002" }
   config.action_mailer.delivery_method = :letter_opener_web
 
+  # 開発環境ではメール確認を無効にする
+  config.action_mailer.perform_deliveries = false
+
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?

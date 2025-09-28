@@ -8,7 +8,10 @@ Rails.application.routes.draw do
 
       namespace :current do
         resource :user, only: [:show]
+        resources :articles, only: [:index, :show, :create, :update]
       end
+      # 認証不要、公開記事のみ
+      resources :articles, only: [:index, :show]
     end
   end
 end

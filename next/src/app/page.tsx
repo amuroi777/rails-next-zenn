@@ -30,15 +30,17 @@ const Index: NextPage = () => {
       <Container maxWidth="md" sx={{ pt: 6 }}>
         <Grid container spacing={4}>
           {articles.map((article: ArticleProps, i: number) => (
-            <Grid key={i} item xs={12} md={6}>
-              <Link href={`/articles/` + article.id}>
-                <ArticleCard
-                  title={article.title}
-                  fromToday={article.fromToday}
-                  userName={article.user.name}
-                />
-              </Link>
-            </Grid>
+              <Grid key={i} size={{ xs: 12, md: 6 }}>
+                <Link href={`/articles/${article.id}`} passHref legacyBehavior>
+                  <a style={{ textDecoration: 'none' }}>
+                    <ArticleCard
+                      title={article.title}
+                      fromToday={article.fromToday}
+                      userName={article.user.name}
+                    />
+                  </a>
+                </Link>
+              </Grid>
           ))}
         </Grid>
       </Container>

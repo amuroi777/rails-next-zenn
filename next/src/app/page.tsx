@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Grid, Container } from '@mui/material'
 import camelcaseKeys from 'camelcase-keys'
 import type { NextPage } from 'next'

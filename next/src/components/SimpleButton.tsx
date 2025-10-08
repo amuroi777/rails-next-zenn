@@ -1,16 +1,16 @@
-import React from 'react'
+import React from "react";
 
 type SimpleButtonProps = {
-  text: string
-  onClick: () => void
-}
+  text: string;
+  onClick: () => void;
+};
 
 const SimpleButton: React.FC<SimpleButtonProps> = (props) => {
   const handleOnClick = () => {
-    alert('clicked')
-  }
+    alert("clicked");
+  };
 
-  return <button onClick={handleOnClick}>{props.text}</button>
-}
+  return <button onClick={handleOnClick}>{props.text}</button>;
+};
 
-export default SimpleButton
+export default SimpleButton;

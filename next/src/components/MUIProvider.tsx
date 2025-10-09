@@ -1,22 +1,22 @@
-"use client";
+'use client'
 
-import CssBaseline from "@mui/material/CssBaseline";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { ReactNode } from "react";
+import CssBaseline from '@mui/material/CssBaseline'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { ReactNode } from 'react'
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#3EA8FF",
+      main: '#3EA8FF',
     },
     secondary: {
-      main: "#19857b",
+      main: '#19857b',
     },
   },
-});
+})
 
 interface MUIProviderProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export default function MUIProvider({ children }: MUIProviderProps) {
@@ -25,5 +25,5 @@ export default function MUIProvider({ children }: MUIProviderProps) {
       <CssBaseline />
       {children}
     </ThemeProvider>
-  );
+  )
 }

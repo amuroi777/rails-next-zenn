@@ -1,24 +1,24 @@
-import { AppBar, Box, Button, Container } from "@mui/material";
-import Image from "next/image";
-import Link from "next/link";
+import { AppBar, Box, Button, Container } from '@mui/material'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const Header = () => {
   return (
     <AppBar
       position="static"
       sx={{
-        backgroundColor: "white",
-        color: "black",
-        boxShadow: "none",
-        py: "12px",
+        backgroundColor: 'white',
+        color: 'black',
+        boxShadow: 'none',
+        py: '12px',
       }}
     >
       <Container maxWidth="lg" sx={{ px: 2 }}>
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
           <Box>
@@ -32,11 +32,11 @@ const Header = () => {
               color="primary"
               variant="contained"
               sx={{
-                color: "white",
-                textTransform: "none",
+                color: 'white',
+                textTransform: 'none',
                 fontSize: 16,
                 borderRadius: 2,
-                boxShadow: "none",
+                boxShadow: 'none',
               }}
             >
               sign in
@@ -45,11 +45,11 @@ const Header = () => {
               color="primary"
               variant="outlined"
               sx={{
-                textTransform: "none",
+                textTransform: 'none',
                 fontSize: 16,
                 borderRadius: 2,
-                boxShadow: "none",
-                border: "1.5px solid #3EA8FF",
+                boxShadow: 'none',
+                border: '1.5px solid #3EA8FF',
                 ml: 2,
               }}
             >
@@ -59,7 +59,7 @@ const Header = () => {
         </Box>
       </Container>
     </AppBar>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

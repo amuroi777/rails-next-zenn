@@ -6,10 +6,10 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import useSWR from 'swr'
-import Loading from '@/components/Loading'
+import ArticleCard from '@/components/ArticleCard'
 import Error from '@/components/Error'
 import Header from '@/components/Header'
-import ArticleCard from '@/components/ArticleCard'
+import Loading from '@/components/Loading'
 import { fetcher } from '@/utils'
 
 type ArticleProps = {

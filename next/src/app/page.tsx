@@ -5,10 +5,10 @@ import camelcaseKeys from 'camelcase-keys'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import useSWR from 'swr'
-
 import ArticleCard from '@/components/ArticleCard'
 import Header from '@/components/Header'
 import { fetcher } from '@/utils'
+import Loading from '@/components/Loading'
 
 type ArticleProps = {
   id: number
@@ -25,7 +25,7 @@ const Index: NextPage = () => {
 
   const { data, error } = useSWR(url, fetcher)
   if (error) return <div>An error</div>
-  if (!data) return <div>Loading...</div>
+  if (!data) return <Loading />
 
   const articles = camelcaseKeys(data.articles)
 

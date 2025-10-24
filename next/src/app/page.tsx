@@ -22,7 +22,7 @@ type ArticleProps = {
 }
 
 const Index: NextPage = () => {
-  const url = 'http://localhost:3002/api/v1/articles'
+  const url = process.env.NEXT_PUBLIC_API_BASE_URL + '/articles'
 
   const { data, error } = useSWR(url, fetcher)
   if (error) return <Error />

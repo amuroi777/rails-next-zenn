@@ -9,6 +9,7 @@ import ArticleCard from '@/components/ArticleCard'
 import Header from '@/components/Header'
 import { fetcher } from '@/utils'
 import Loading from '@/components/Loading'
+import Error from '@/components/Error'
 
 type ArticleProps = {
   id: number
@@ -24,7 +25,7 @@ const Index: NextPage = () => {
   const url = 'http://localhost:3002/api/v1/articles'
 
   const { data, error } = useSWR(url, fetcher)
-  if (error) return <div>An error</div>
+  if (error) return <Error />
   if (!data) return <Loading />
 
   const articles = camelcaseKeys(data.articles)

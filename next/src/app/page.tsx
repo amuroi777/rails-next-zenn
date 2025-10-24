@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Grid, Container } from '@mui/material'
+import { Box, Grid, Container, Pagination } from '@mui/material'
 import camelcaseKeys from 'camelcase-keys'
 import type { NextPage } from 'next'
 import Link from 'next/link'
@@ -10,6 +10,7 @@ import Header from '@/components/Header'
 import { fetcher } from '@/utils'
 import Loading from '@/components/Loading'
 import Error from '@/components/Error'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 type ArticleProps = {
   id: number
@@ -22,13 +23,21 @@ type ArticleProps = {
 }
 
 const Index: NextPage = () => {
-  const url = process.env.NEXT_PUBLIC_API_BASE_URL + '/articles'
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const page = Number(searchParams.get('page') ?? 1)
+  const url = process.env.NEXT_PUBLIC_API_BASE_URL + '/articles/?page=' + page
 
   const { data, error } = useSWR(url, fetcher)
   if (error) return <Error />
   if (!data) return <Loading />
 
   const articles = camelcaseKeys(data.articles)
+  const meta = camelcaseKeys(data.meta)
+
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    router.push('/?page=' + value)
+  }
 
   return (
     <Box sx={{ backgroundColor: '#e6f2ff', minHeight: '100vh' }}>
@@ -49,6 +58,13 @@ const Index: NextPage = () => {
             </Grid>
           ))}
         </Grid>
+        <Box sx={{ display: 'flex', justifyContent: 'center', py: 6 }}>
+          <Pagination
+            count={meta.totalPages}
+            page={meta.currentPage}
+            onChange={handleChange}
+          />
+        </Box>
       </Container>
     </Box>
   )

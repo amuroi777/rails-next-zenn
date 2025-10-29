@@ -1,12 +1,10 @@
+'use client'
 import ArticleIcon from '@mui/icons-material/Article'
 import PersonIcon from '@mui/icons-material/Person'
 import UpdateIcon from '@mui/icons-material/Update'
 
-import Error from '@/components/Error'
-import Loading from '@/components/Loading'
-import MarkdownText from '@/components/MarkdownText'
-import { fetcher } from '@/utils'
 import {
+  Box,
   Card,
   Container,
   List,
@@ -14,11 +12,14 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material'
-import { Box } from '@mui/material'
 import camelcaseKeys from 'camelcase-keys'
 import { NextPage } from 'next'
 // import { useRouter } from 'next/router'
 import useSWR from 'swr'
+import Error from '@/components/Error'
+import Loading from '@/components/Loading'
+import MarkdownText from '@/components/MarkdownText'
+import { fetcher } from '@/utils'
 
 type ArticleProps = {
   title: string
@@ -34,11 +35,11 @@ type Props = {
   params: { id: string }
 }
 
-const ArticleDetail: NextPage<Props> = async ({ params }) => {
+const ArticleDetail: NextPage<Props> = ({ params }) => {
   const { id } = params
   const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/articles/${id}`
 
-  const { data, error } = useSWR(id ? url + id : null, fetcher)
+  const { data, error } = useSWR(id ? url : null, fetcher)
   if (error) return <Error />
   if (!data) return <Loading />
 

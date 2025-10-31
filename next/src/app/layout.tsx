@@ -1,3 +1,4 @@
+import CurrentUserFetch from '@/components/CurrentUserFetch'
 import '@/styles/destyle.css'
 
 export const metadata = {
@@ -12,6 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <CurrentUserFetch />
       <body>{children}</body>
     </html>
   )

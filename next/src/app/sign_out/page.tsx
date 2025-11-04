@@ -3,11 +3,12 @@
 import { NextPage } from 'next'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
-import { useUserState } from '@/hooks/useGlobalState'
+import { useSnackbarState, useUserState } from '@/hooks/useGlobalState'
 
 const SignOut: NextPage = () => {
   const router = useRouter()
   const [, setUser] = useUserState()
+  const [, setSnackbar] = useSnackbarState()
 
   useEffect(() => {
     localStorage.clear()
@@ -18,8 +19,16 @@ const SignOut: NextPage = () => {
       isSignedIn: false,
       isFetched: true,
     })
-    router.push('/')
-  }, [router, setUser])
+    setSnackbar({
+      message: 'サインアウトに成功しました',
+      severity: 'success',
+      pathname: '/',
+    })
+    // 次のtickで遷移して、スナックバー状態を確実に反映させる
+    setTimeout(() => {
+      router.push('/')
+    }, 0)
+  }, [router, setUser, setSnackbar])
 
   return <></>
 }

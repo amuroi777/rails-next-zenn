@@ -6,7 +6,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import { useUserState } from '@/hooks/useGlobalState'
+import { useSnackbarState, useUserState } from '@/hooks/useGlobalState'
 
 type SigninFormData = {
   email: string
@@ -17,6 +17,7 @@ const SignIn = () => {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
   const [user, setUser] = useUserState()
+  const [, setSnackbar] = useSnackbarState()
 
   const { handleSubmit, control } = useForm<SigninFormData>({
     defaultValues: { email: '', password: '' },
@@ -50,10 +51,20 @@ const SignIn = () => {
           ...user,
           isFetched: false,
         })
+        setSnackbar({
+          message: 'サインインに成功しました',
+          severity: 'success',
+          pathname: '/',
+        })
         router.push('/')
       })
       .catch((e: AxiosError<{ error: string }>) => {
         console.log(e.message)
+        setSnackbar({
+          message: '登録ユーザーが見つかりません',
+          severity: 'error',
+          pathname: '/sign_in',
+        })
         setIsLoading(false)
       })
   }

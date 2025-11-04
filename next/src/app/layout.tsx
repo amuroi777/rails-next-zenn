@@ -1,4 +1,6 @@
 import CurrentUserFetch from '@/components/CurrentUserFetch'
+import MUIProvider from '@/components/MUIProvider'
+import SuccessSnackbar from '@/components/Snackbar'
 import '@/styles/destyle.css'
 
 export const metadata = {
@@ -13,8 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <CurrentUserFetch />
-      <body>{children}</body>
+      <body>
+        <MUIProvider>
+          <CurrentUserFetch />
+          {children}
+          <SuccessSnackbar />
+        </MUIProvider>
+      </body>
     </html>
   )
 }

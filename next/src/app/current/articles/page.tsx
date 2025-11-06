@@ -15,6 +15,7 @@ import camelcaseKeys from 'camelcase-keys'
 import { NextPage } from 'next'
 import useSWR from 'swr'
 import Error from '@/components/Error'
+import Header from '@/components/Header'
 import Loading from '@/components/Loading'
 import { useUserState } from '@/hooks/useGlobalState'
 import { useRequireSignedIn } from '@/hooks/userRequireSignedIn'
@@ -45,6 +46,7 @@ const CurrentArticles: NextPage = () => {
         pb: 8,
       }}
     >
+      <Header />
       <Container maxWidth="md" sx={{ pt: 6, px: 4 }}>
         <Box sx={{ mb: 4 }}>
           <Typography component="h2" sx={{ fontSize: 32, fontWeight: 'bold' }}>

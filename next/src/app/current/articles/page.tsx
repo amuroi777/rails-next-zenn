@@ -13,6 +13,7 @@ import {
 } from '@mui/material'
 import camelcaseKeys from 'camelcase-keys'
 import { NextPage } from 'next'
+import Link from 'next/link'
 import useSWR from 'swr'
 import Error from '@/components/Error'
 import Header from '@/components/Header'
@@ -130,13 +131,15 @@ const CurrentArticles: NextPage = () => {
                   </Avatar>
                 </Box>
                 <Box>
-                  <Avatar>
-                    <Tooltip title="表示を確認">
-                      <IconButton sx={{ backgroundColor: '#F1F5FA' }}>
-                        <ChevronRightIcon sx={{ color: '#99AAB6' }} />
-                      </IconButton>
-                    </Tooltip>
-                  </Avatar>
+                  <Link href={'/current/articles/' + article.id}>
+                    <Avatar>
+                      <Tooltip title="表示を確認">
+                        <IconButton sx={{ backgroundColor: '#F1F5FA' }}>
+                          <ChevronRightIcon sx={{ color: '#99AAB6' }} />
+                        </IconButton>
+                      </Tooltip>
+                    </Avatar>
+                  </Link>
                 </Box>
               </Box>
             </Box>

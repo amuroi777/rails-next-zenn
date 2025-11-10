@@ -53,7 +53,7 @@ const CurrentArticlesEdit: NextPage = () => {
   }
 
   const handleChangeStatusChecked = () => {
-    setPreviewChecked(!statusChecked)
+    setStatusChecked(!statusChecked)
   }
 
   const url = process.env.NEXT_PUBLIC_API_BASE_URL + '/current/articles/'

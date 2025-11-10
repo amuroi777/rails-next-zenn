@@ -16,7 +16,7 @@ import {
 import axios, { AxiosError } from 'axios'
 import { NextPage } from 'next'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import { useParams, usePathname } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import useSWR from 'swr'
@@ -41,6 +41,7 @@ type ArticleFormData = {
 const CurrentArticlesEdit: NextPage = () => {
   useRequireSignedIn()
   const params = useParams()
+  const pathname = usePathname()
   const [user] = useUserState()
   const [, setSnackbar] = useSnackbarState()
   const [previewChecked, setPreviewChecked] = useState<boolean>(false)
@@ -53,7 +54,7 @@ const CurrentArticlesEdit: NextPage = () => {
   }
 
   const handleChangeStatusChecked = () => {
-    setPreviewChecked(!statusChecked)
+    setStatusChecked(!statusChecked)
   }
 
   const url = process.env.NEXT_PUBLIC_API_BASE_URL + '/current/articles/'
@@ -92,19 +93,21 @@ const CurrentArticlesEdit: NextPage = () => {
 
   const onSubmit: SubmitHandler<ArticleFormData> = (data) => {
     if (data.title == '') {
-      return setSnackbar({
+      setSnackbar({
         message: '記事の保存にはタイトルが必要です',
         severity: 'error',
-        pathname: '/current/articles/edit/[id]',
+        pathname: pathname,
       })
+      return
     }
 
     if (statusChecked && data.content == '') {
-      return setSnackbar({
+      setSnackbar({
         message: '本文なしの記事は公開できません',
         severity: 'error',
-        pathname: '/current/articles/edit/[id]',
+        pathname: pathname,
       })
+      return
     }
 
     setIsLoading(true)
@@ -132,7 +135,7 @@ const CurrentArticlesEdit: NextPage = () => {
         setSnackbar({
           message: '記事を保存しました',
           severity: 'success',
-          pathname: '/current/articles/edit/[id]',
+          pathname: pathname,
         })
       })
       .catch((err: AxiosError<{ error: string }>) => {
@@ -140,10 +143,10 @@ const CurrentArticlesEdit: NextPage = () => {
         setSnackbar({
           message: '記事の保存に失敗しました',
           severity: 'error',
-          pathname: '/current/articles/edit/[id]',
+          pathname: pathname,
         })
       })
-    setIsLoading(true)
+    setIsLoading(false)
   }
 
   if (error) return <Error />

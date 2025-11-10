@@ -146,7 +146,7 @@ const CurrentArticlesEdit: NextPage = () => {
           pathname: pathname,
         })
       })
-    setIsLoading(true)
+    setIsLoading(false)
   }
 
   if (error) return <Error />

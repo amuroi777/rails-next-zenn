@@ -1,15 +1,19 @@
-FROM --platform=linux/x86_64 nginx:latest
+FROM nginx:latest
 
-# ヘルスチェック用
+# ヘルスチェック用（既存のまま）
 RUN apt-get update && apt-get install -y curl vim sudo lsof
 
-# インクルード用のディレクトリ内を削除
+# インクルード用のディレクトリ内を削除（既存のまま）
 RUN rm -f /etc/nginx/conf.d/*
 
-# Nginxの設定ファイルをコンテナにコピー
-ADD nginx.conf /etc/nginx/myapp.conf
+# Nginxの設定ファイルをコンテナにコピー（既存のまま）
+ADD nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
-# ビルド完了後にNginxを起動
-CMD /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/myapp.conf
+# 【実行権限付与】
+COPY rails/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
-EXPOSE 80
+# 【最終修正！】明示的に /bin/bash を使ってスクリプトを実行
+ENTRYPOINT ["/bin/bash", "/usr/local/bin/entrypoint.sh"]
+
+# EXPOSE 80

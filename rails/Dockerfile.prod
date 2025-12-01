@@ -1,13 +1,13 @@
-FROM --platform=linux/x86_64 ruby:3.1.2
+FROM ruby:3.1.2
 
-ENV LANG C.UTF-8
-ENV TZ Asia/Tokyo
+ENV LANG=C.UTF-8
+ENV TZ=Asia/Tokyo
 ENV RAILS_ENV=production
 
 RUN mkdir /myapp
 WORKDIR /myapp
-COPY Gemfile /myapp/Gemfile
-COPY Gemfile.lock /myapp/Gemfile.lock
+COPY rails/Gemfile /myapp/Gemfile
+COPY rails/Gemfile.lock /myapp/Gemfile.lock
 
 # Deal with Bundler bugs
 RUN gem update --system
@@ -15,7 +15,7 @@ RUN gem update --system
 
 RUN bundle install
 
-COPY . /myapp
+COPY rails/ /myapp
 RUN mkdir -p tmp/sockets
 RUN mkdir -p tmp/pids
 
@@ -23,7 +23,7 @@ VOLUME /myapp/public
 VOLUME /myapp/tmp
 
 # Add a script to be executed every time the container starts.
-COPY entrypoint.prod.sh /usr/bin/
+COPY rails/entrypoint.prod.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.prod.sh
 ENTRYPOINT ["entrypoint.prod.sh"]
 EXPOSE 3002

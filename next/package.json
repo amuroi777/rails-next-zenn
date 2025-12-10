@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir src",
-    "format": "next lint --fix --dir src"
+    "format": "next lint --fix --dir src",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -30,7 +32,10 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.8",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
     "@types/camelcase-keys": "^4.1.0",
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.6.2",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
@@ -43,7 +48,9 @@
     "eslint-plugin-prettier": "^5.4.1",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^30.2.0",
     "prettier": "^3.5.3",
+    "ts-jest": "^29.4.6",
     "typescript": "^5.8.3",
     "zenn-content-css": "^0.2.3"
   },

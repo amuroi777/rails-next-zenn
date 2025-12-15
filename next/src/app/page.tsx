@@ -7,9 +7,9 @@ import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import useSWR from 'swr'
 import ArticleCard from '@/components/ArticleCard'
-import Error from '@/components/Error'
 import Header from '@/components/Header'
 import Loading from '@/components/Loading'
+import Error from '@/components/error/Error'
 import { fetcher } from '@/utils'
 
 type ArticleProps = {

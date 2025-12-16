@@ -20,7 +20,10 @@ try {
       private _body: string
       headers: { get: (name: string) => string | null }
 
-      constructor(body: string, init?:{status?: number; headers?: Record<string, string> }) {
+      constructor(
+        body: string,
+        init?: { status?: number; headers?: Record<string, string> },
+      ) {
         this._body = body
         this.status = init?.status ?? 200
         const headerObj = init?.headers ?? {}
@@ -31,11 +34,14 @@ try {
         return Promise.resolve(this._body ? JSON.parse(this._body) : null)
       }
 
-      static json(obj: unknown, init?: { status?: number; headers?: Record<string, string> }) {
+      static json(
+        obj: unknown,
+        init?: { status?: number; headers?: Record<string, string> },
+      ) {
         return new TestResponse(JSON.stringify(obj), init)
       }
     }
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ;(globalThis as any).Response = TestResponse
   }
 }

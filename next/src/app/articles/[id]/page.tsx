@@ -16,9 +16,9 @@ import camelcaseKeys from 'camelcase-keys'
 import { NextPage } from 'next'
 // import { useRouter } from 'next/router'
 import useSWR from 'swr'
-import Error from '@/components/Error'
 import Loading from '@/components/Loading'
 import MarkdownText from '@/components/MarkdownText'
+import Error from '@/components/error/Error'
 import { fetcher } from '@/utils'
 
 type ArticleProps = {

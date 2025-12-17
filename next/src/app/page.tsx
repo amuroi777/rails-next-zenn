@@ -8,8 +8,8 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import useSWR from 'swr'
 import ArticleCard from '@/components/ArticleCard'
 import Header from '@/components/Header'
-import Loading from '@/components/Loading'
 import Error from '@/components/error/Error'
+import Loading from '@/components/loading/Loading'
 import { fetcher } from '@/utils'
 
 type ArticleProps = {

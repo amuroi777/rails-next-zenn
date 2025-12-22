@@ -12,4 +12,7 @@ module.exports = {
   ],
   testPathIgnorePatterns: ['/node_modules/', '<rootDir>/.next/'],
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
 }
